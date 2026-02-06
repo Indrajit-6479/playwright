@@ -114,10 +114,10 @@ let variable = (parameter): returnType =>{
 */
 
 //Example 1: Arrow function with No Parameters and No return type
-let greeting = (): void => {
+let myGreeting = (): void => {
     console.log("Hello Welcome!");
 }
-greeting();
+myGreeting();
 
 //Example 2: Arrow function with Parameters and return type
 let addition = (value1: number, value2: number): number => {
@@ -126,8 +126,8 @@ let addition = (value1: number, value2: number): number => {
 console.log(addition(10, 20));
 
 //Example3: Arrow function with Implicit Return
-let sum = (a: number, b: number): number => a + b;
-console.log(sum(10, 20));
+let NumSum = (a: number, b: number): number => a + b;
+console.log(NumSum(10, 20));
 
 //Example4: Arrow function with optional parameters
 let detailInfo = (id: number, name: string, mailId?: string): void => {
