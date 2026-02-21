@@ -47,7 +47,56 @@ let slicedArray = fruits.slice(1, 3);
 console.log("fruits array slice:", slicedArray);
 
 //7. splice(): Add/removes elements from an array (from everywhere)
-// Syntax: array.splice(start, deleteCount, item1,....itemN)
+// Syntax: array.splice(start, removedCount, item1,....itemN)
 
 console.log("fruits array:", fruits);
-//Example i):
+//Example i): Removing elements using splice()
+let removedFruits = fruits.splice(1, 2); //here 1 is starting index and 2 is removed count. It will remove 2 elements from index 1
+console.log("After splice():", fruits);
+console.log("Removed fruits:", removedFruits);
+
+//Example ii): Adding elements using splice()
+console.log("fruits array:", fruits);
+fruits.splice(1, 0, "grapes", "watermelon"); //here 1 is starting index and 0 is removed count. It will add 2 elements at index 1
+console.log("After splice():", fruits);
+
+//Example iii): Removing and Adding elements using splice()
+console.log("fruits array:", fruits);
+fruits.splice(2, 2, "custard apple", "watermelon"); //here 2 is starting index and 2 is removed count. It will remove 2 elements from index 2 and add 2 elements at index 2
+console.log("After splice():", fruits);
+
+//8. indexOf(): Returns the first index at which a given element can be found in the array, or -1 if it is not present.
+// Syntax: array.indexOf(searchElement, fromIndex)
+console.log("fruits array:", fruits);
+let index = fruits.indexOf("grapes");
+console.log("Index of grapes:", index);
+
+//9. includes(): It returns a true if the element is present in the array else returns false.
+// Syntax: array.includes(searchElement, fromIndex)
+console.log("fruits array:", fruits);
+let isPresent = fruits.includes("banana");
+console.log("Is banana present in fruits array?", isPresent);
+
+//10. toString(): It converts an array to a string and returns the result.
+// Syntax: array.toString()
+console.log("fruits array:", fruits);
+let fruitsString = fruits.toString();
+console.log("Fruits array as string:", fruitsString);
+
+//11. join(): It joins all elements of an array into a string and returns this string.
+// Syntax: array.join(separator)
+console.log("fruits array:", fruits);
+let joinedFruits = fruits.join(", ");
+console.log("Joined fruits:", joinedFruits);
+
+//12. reverse(): It reverses the order of the elements in an array in place and returns the reference to the same array.
+// Syntax: array.reverse()
+console.log("fruits array:", fruits);
+fruits.reverse();
+console.log("Reversed fruits array:", fruits);
+
+//13. sort(): It sorts the elements of an array in place and returns the reference to the same array.
+// Syntax: array.sort(compareFunction)
+console.log("fruits array:", fruits);
+fruits.sort();
+console.log("Sorted fruits array:", fruits);
