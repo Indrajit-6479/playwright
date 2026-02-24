@@ -1,4 +1,4 @@
-##### 🌍 Day 1: The Foundations of Payments
+### 🌍 Day 1: The Foundations of Payments
 
 Welcome to **Day 1**! Today, we are laying the foundation.
 
@@ -9,11 +9,11 @@ Later, we will look at the specific **"trucks" (messages)** driving on the roads
 
 ---
 
-##### 🗺️ 1.1 - 1.3: The Big Picture & Your Journey
+### 🗺️ 1.1 - 1.3: The Big Picture & Your Journey
 
 In a multinational financial institution, you aren't just moving numbers; you are facilitating **Global Commerce**.
 
-##### 🎯 The Goal
+### 🎯 The Goal
 
 By **Day 45**, you will be able to look at a raw XML message and tell a story like:
 
@@ -21,7 +21,7 @@ By **Day 45**, you will be able to look at a raw XML message and tell a story li
 
 That is real payments understanding.
 
-##### 💎 The Value
+### 💎 The Value
 
 Banks are spending **billions** to switch to **ISO 20022**.
 
@@ -35,7 +35,7 @@ They need people who:
 
 ---
 
-##### 💳 1.4: Understanding How Payments Work
+### 💳 1.4: Understanding How Payments Work
 
 Money does **NOT** actually "move" across the world like a physical package.
 
@@ -56,15 +56,15 @@ Money moves through:
 
 ---
 
-##### 🏦 The "4-Corner Model"
+### 🏦 The "4-Corner Model"
 
 Almost every payment involves **four main parties**.
 
 If you can clearly explain this in an interview, you have already beaten **50% of candidates.**
 
-##### The Four Participants
+### The Four Participants
 
-##### 1️⃣ The Payer (Debtor)
+### 1️⃣ The Payer (Debtor)
 The person sending the money.
 
 Example:
@@ -76,7 +76,7 @@ They initiate the payment.
 
 ---
 
-##### 2️⃣ The Payer’s Bank (Debtor Agent)
+### 2️⃣ The Payer’s Bank (Debtor Agent)
 
 The bank that:
 - Holds the payer’s account
@@ -90,7 +90,7 @@ This bank is responsible for:
 
 ---
 
-##### 3️⃣ The Payee’s Bank (Creditor Agent)
+### 3️⃣ The Payee’s Bank (Creditor Agent)
 
 The bank that:
 - Receives the payment message
@@ -102,7 +102,7 @@ It receives:
 
 ---
 
-##### 4️⃣ The Payee (Creditor)
+### 4️⃣ The Payee (Creditor)
 
 The person receiving the money.
 
@@ -115,7 +115,7 @@ They ultimately receive the funds into their account.
 
 ---
 
-##### 🔄 Clearing vs. Settlement (The MUST-KNOW Interview Concept)
+### 🔄 Clearing vs. Settlement (The MUST-KNOW Interview Concept)
 
 In interviews, you may be asked:
 
@@ -130,11 +130,11 @@ You MUST be able to answer this clearly.
 
 ---
 
-##### ☕ Simple Analogy
+### ☕ Simple Analogy
 
 Imagine you buy a coffee with a credit card.
 
-##### Step 1 – Clearing
+### Step 1 – Clearing
 - You tap your card.
 - The machine says: **"Approved."**
 - This happens in seconds.
@@ -147,7 +147,7 @@ This is **clearing**.
 
 ---
 
-##### Step 2 – Settlement
+### Step 2 – Settlement
 - Days later,
 - The credit card company actually transfers the money
 - From its bank
@@ -157,7 +157,7 @@ That is **settlement**.
 
 ---
 
-##### 🌉 The Challenge: Correspondent Banking
+### 🌉 The Challenge: Correspondent Banking
 
 Now things get interesting.
 
@@ -176,7 +176,7 @@ These banks act as a **bridge** between the two banks.
 
 ---
 
-##### Why This Becomes Complicated
+### Why This Becomes Complicated
 
 When intermediary banks are involved:
 
@@ -199,13 +199,13 @@ Which helps:
 
 ---
 
-##### 🎯 Day 1 Key Takeaways (Interview Gold)
+### 🎯 Day 1 Key Takeaways (Interview Gold)
 
 These are critical points you should confidently say in an interview:
 
 ---
 
-##### ✅ 1. Payments Are Virtual
+### ✅ 1. Payments Are Virtual
 
 Payments are:
 
@@ -217,7 +217,7 @@ No physical money travels internationally in most cases.
 
 ---
 
-##### ✅ 2. Information ≠ Money
+### ✅ 2. Information ≠ Money
 
 This is VERY important.
 
@@ -233,7 +233,7 @@ Information flow and money flow are related — but separate processes.
 
 ---
 
-##### ✅ 3. The Chain Matters
+### ✅ 3. The Chain Matters
 
 If a payment is **slow**, it is usually because:
 
@@ -247,7 +247,7 @@ Understanding this shows deep knowledge.
 
 ---
 
-##### 🚀 End of Day 1
+### 🚀 End of Day 1
 
 Great job on Day 1!
 
@@ -261,7 +261,7 @@ You understand:
 
 ---
 
-##### 🔜 Ready for Day 2?
+### 🔜 Ready for Day 2?
 
 We will start **Phase 1 (Foundations)** by looking at:
 
