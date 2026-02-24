@@ -1,4 +1,4 @@
-### Day 2: From the "What" to the "Why"
+## Day 2: From the "What" to the "Why"
 
 Welcome to **Day 2**! Today, we’re moving from the **"What"** (the map) to the **"Why."**
 
@@ -6,7 +6,7 @@ If you're going to work for a multinational bank, you'll hear the word **ISO** a
 
 ---
 
-### 🏗️ 2.1: What is ISO? (The Foundation of Global Standards)
+## 🏗️ 2.1: What is ISO? (The Foundation of Global Standards)
 
 **ISO** stands for the **International Organization for Standardization**.  
 

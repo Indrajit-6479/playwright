@@ -1,4 +1,4 @@
-### 🌍 Day 1: The Foundations of Payments
+## 🌍 Day 1: The Foundations of Payments
 
 Welcome to **Day 1**! Today, we are laying the foundation.
 
@@ -9,7 +9,7 @@ Later, we will look at the specific **"trucks" (messages)** driving on the roads
 
 ---
 
-### 🗺️ 1.1 - 1.3: The Big Picture & Your Journey
+## 🗺️ 1.1 - 1.3: The Big Picture & Your Journey
 
 In a multinational financial institution, you aren't just moving numbers; you are facilitating **Global Commerce**.
 
