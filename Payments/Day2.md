@@ -1,4 +1,4 @@
-##### Day 2: From the "What" to the "Why"
+### Day 2: From the "What" to the "Why"
 
 Welcome to **Day 2**! Today, we’re moving from the **"What"** (the map) to the **"Why."**
 
@@ -6,7 +6,7 @@ If you're going to work for a multinational bank, you'll hear the word **ISO** a
 
 ---
 
-##### 🏗️ 2.1: What is ISO? (The Foundation of Global Standards)
+### 🏗️ 2.1: What is ISO? (The Foundation of Global Standards)
 
 **ISO** stands for the **International Organization for Standardization**.  
 
@@ -16,7 +16,7 @@ If you're going to work for a multinational bank, you'll hear the word **ISO** a
   - An A4 piece of paper is a specific size
   - Credit cards should be the same shape so they fit into every ATM in the world
 
-##### Why does a Bank care about ISO?
+### Why does a Bank care about ISO?
 
 Imagine:
 
@@ -33,7 +33,7 @@ Imagine:
 
 ---
 
-##### The "Banker Talk" Vocabulary
+### The "Banker Talk" Vocabulary
 
 Use these terms in your interview to sound professional:
 
@@ -45,7 +45,7 @@ Use these terms in your interview to sound professional:
 
 ---
 
-##### Why ISO 20022 is the "Gold Standard"
+### Why ISO 20022 is the "Gold Standard"
 
 Before **ISO 20022**, banks used **ISO 15022** (which used "MT" messages).  
 
@@ -65,7 +65,7 @@ Answer:
 
 ---
 
-###### 🎯 Day 2 Key Takeaways
+#### 🎯 Day 2 Key Takeaways
 
 - **ISO** is the global "Rule Maker" headquartered in Switzerland  
 - **Standards** are necessary because they allow for **Straight-Through Processing (STP)** — money moves faster and cheaper  
