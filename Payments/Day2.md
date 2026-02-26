@@ -6,7 +6,7 @@ If you're going to work for a multinational bank, you'll hear the word **ISO** a
 
 ---
 
-## 🏗️ 2.1: What is ISO? (The Foundation of Global Standards)
+### 🏗️ 2.1: What is ISO? (The Foundation of Global Standards)
 
 **ISO** stands for the **International Organization for Standardization**.  
 

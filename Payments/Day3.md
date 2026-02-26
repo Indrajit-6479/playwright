@@ -6,7 +6,7 @@ Yesterday, we learned that **ISO** is the "Rule Maker." Today, we look at their 
 
 ---
 
-## 🗣️ 2.2: What is ISO 20022? (The Global Financial Language)
+### 🗣️ 2.2: What is ISO 20022? (The Global Financial Language)
 
 Many people think ISO 20022 is just a new type of digital file. That is a **mistake**!
 
@@ -23,7 +23,7 @@ This is why we call it a **Common Language**.
 
 ---
 
-## The 3 Layers of ISO 20022
+### The 3 Layers of ISO 20022
 
 To understand ISO 20022, you have to look at it like a **house**. It’s built in three layers:
 
@@ -35,7 +35,7 @@ To understand ISO 20022, you have to look at it like a **house**. It’s built i
 
 ---
 
-## Why is it "Rich Data"?
+### Why is it "Rich Data"?
 
 In an interview, you’ll hear the term **"Rich Data."** This is the biggest selling point of ISO 20022.
 

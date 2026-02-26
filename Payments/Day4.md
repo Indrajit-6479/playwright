@@ -1,4 +1,4 @@
-# Day 4: The Calendar
+## Day 4: The Calendar
 
 Welcome to Day 4! Today, we are looking at the **"Calendar."**
 
@@ -26,7 +26,7 @@ You **can't just shut down the banks for a weekend** to do it.
 
 ---
 
-## The "Coexistence" Concept (Critical for Interviews)
+### The "Coexistence" Concept (Critical for Interviews)
 
 During the last few years, the biggest challenge for banks was **Coexistence**.
 
@@ -49,7 +49,7 @@ If they ask: *"What was the significance of the November 2025 deadline?"*
 
 ---
 
-## 🎯 Day 4 Key Takeaways
+### 🎯 Day 4 Key Takeaways
 
 - **It wasn't overnight:** It took over 20 years to get the whole world to agree.  
 - **Coexistence was the hard part:** Managing two languages at once led to "data truncation" risks.  
