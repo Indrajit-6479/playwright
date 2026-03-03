@@ -1,0 +1,7 @@
+.vscode/
+.vscode/*.code-workspace
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/settings.json
+.DS_Store

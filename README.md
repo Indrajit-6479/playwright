@@ -1,2 +1,2 @@
-# playwrite
-This is my playwrite repo
+# Playwright
+This is my Playwright repo
