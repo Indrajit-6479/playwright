@@ -1,5 +1,5 @@
-#### Installing Playwrite:
-- To install playwrite we required node installed in your system
+#### Installing Playwright:
+- To install Playwright we required node installed in your system
 - to check node is installed 
 ```
   node --version
@@ -8,7 +8,7 @@
 ```
   npm --version
 ```
-- To install playwrite 
+- To install Playwright 
 ```
 npm init playwright@latest
 ```
