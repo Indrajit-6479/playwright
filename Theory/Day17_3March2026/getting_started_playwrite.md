@@ -118,6 +118,8 @@ Because each step **depends on the previous one**:
 - You can only logout **after** attendance is marked
 
 So even though these are `async` functions (they return Promises), we use `await` to make them **behave like synchronous** — waiting for each step to finish before the next one starts.
+OR
+if particular statement perform some action on it then we can use `await`.
 ```ts
 async function loginFlow() {
   const userData = await getDataFromDB();       // Step 1
