@@ -36,17 +36,25 @@ with using locators.
 
 ## Locators — Frequently Used & When to Use
 
-### 1. `getByRole`
-- Locates element by its **ARIA role** (button, textbox, heading etc.)
-- **When to use:** This is the **most recommended** locator in Playwright.
-  Use it when the element has a clear role like button, link, checkbox.
+### 1. `page.getByAltText("Alt_text")`
+- It identifies image and similar elements based on Alt attribute.
+- **When to use:** Use this locator when your element supports alt text such as img and area elements.
 ```ts
-await page.getByRole('button', { name: 'Login' }).click();
+await expect(page.getByAltText("Alt_text").toBeVisible())
+```
+
+---
+### 2. `page.getByText("text")`
+- It identifies text element.
+- You can match by substring or exact string
+- **When to use:** Use this locator when your elements are non interactive like div, span, p etc.
+```ts
+await expect(page.getByAltText("Alt_text").toBeVisible())
 ```
 
 ---
 
-### 1. `getByRole`
+### 3. `getByRole`
 - Locates element by its **ARIA role** (button, textbox, heading etc.)
 - **When to use:** This is the **most recommended** locator in Playwright.
   Use it when the element has a clear role like button, link, checkbox.
