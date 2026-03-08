@@ -12,4 +12,7 @@ test("Verify Playwright Locators", async ({ page }) => {
     // await expect(page.getByText("welcome")).toBeVisible(); //partial text
     // await expect(page.getByText("/Welcome\s+To\s+Our\s+Store/i")).toBeVisible(); //regex
 
+    //3. Using page.getByRole()
+    await page.getByRole("link", {name: 'Register'}).click();
+    await expect(page.getByRole("heading",{name: 'Register'})).toBeVisible();
 })
