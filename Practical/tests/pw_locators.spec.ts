@@ -15,4 +15,6 @@ test("Verify Playwright Locators", async ({ page }) => {
     //3. Using page.getByRole()
     await page.getByRole("link", {name: 'Register'}).click();
     await expect(page.getByRole("heading",{name: 'Register'})).toBeVisible();
+
+    //4.
 })
