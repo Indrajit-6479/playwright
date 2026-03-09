@@ -54,7 +54,7 @@ await expect(page.getByAltText("Alt_text").toBeVisible())
 
 - It identifies text element.
 - You can match by substring or exact string
-- **When to use:** Use this locator when your elements are non interactive like div, span, p etc.
+- **When to use:** Use this locator when your elements are non-interactive like div, span, p etc.
 
 ```ts
 await expect(page.getByAltText("Alt_text").toBeVisible())
@@ -62,23 +62,11 @@ await expect(page.getByAltText("Alt_text").toBeVisible())
 
 ---
 
-### 3. `getByRole`
+### 3. `getByRole('element_name'),{name: 'value'})`
 
 - Locates element by its **ARIA role** (button, textbox, heading etc.)
 - **When to use:** This is the **most recommended** locator in Playwright.
   Use it when the element has a clear role like button, link, checkbox.
-
-```ts
-await page.getByRole('button', { name: 'Login' }).click();
-```
-
----
-
-### 2. `getByText`
-
-- Locates element by its **visible text content**.
-- **When to use:** When you want to find an element
-  by the exact text displayed on screen.
 
 ```html
 <h3>Sign Up</h3>
@@ -98,20 +86,7 @@ await page.getByRole('button', {name: '/submit/i'}).click();
 ```
 
 ---
-
-### 3. `getByPlaceholder`
-
-- Locates input field by its **placeholder text**.
-- **When to use:** When input fields have placeholder text
-  and no label or ID is available.
-
-```ts
-await page.getByPlaceholder('Enter your email').fill('test@gmail.com');
-```
-
----
-
-### 4. `getByLabel`
+### 4. `getByLabel('label_text').fill('value_which_need_to_be_filled')`
 
 - Locates input by its **associated label**.
 - **When to use:** When form fields have a proper `<label>` tag.
@@ -123,7 +98,29 @@ await page.getByLabel('Username').fill('admin');
 
 ---
 
-### 5. `getByTestId`
+### 5. `getByPlaceholder('placeholder_text').fill('value_which_need_to_be_filled')`
+
+- Locates input field by its **placeholder text**.
+- **When to use:** When input fields have placeholder text
+  and no label or ID is available.
+
+```ts
+await page.getByPlaceholder('Enter your email').fill('test@gmail.com');
+```
+
+---
+### 6. `getByTitle('title_text').click()`
+
+- Locates element by its **title** attribute.
+- **When to use:** When your element has a meaningful `title`
+  attribute that can be used for identification.
+
+```ts
+await page.getByTitle('Submit Form').click();
+```
+
+---
+### 7. `getByTestId('data-testid_value').click()`
 
 - Locates element by **data-testid** attribute.
 - **When to use:** When developers have added `data-testid`
