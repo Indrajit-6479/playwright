@@ -240,6 +240,63 @@ git merge upstream/main
   git fetch upstream
   git merge upstream/main
   ```
+#### Q6. Two developers pushed to main at the same time. There is a conflict. How do you handle it?
+```
+git pull origin main        # get latest
+# resolve conflicts manually
+git add .
+git commit -m "resolved merge conflict"
+git push origin main
+```
+#### Q7. You committed sensitive data (API key) by mistake. What do you do?
+```
+# Remove sensitive file from all Git commits/history
+git filter-branch --force --index-filter \
+"git rm --cached --ignore-unmatch config/secrets.yml" HEAD
+```
+- git filter-branch → rewrites Git history
+- --force → overwrite previous rewritten history
+- --index-filter → modify tracked files in each commit
+- git rm --cached → remove file from Git, keep locally
+- --ignore-unmatch → skip commits where file doesn’t exist
+- config/secrets.yml → sensitive file to remove
+- HEAD → apply rewrite to all commits till latest
+
+```
+# Force push (coordinate with team first)
+# Replace remote history with cleaned history
+git push origin --force --all
+```
+- git push → upload changes to remote
+- origin → remote repository name
+- --force → overwrite remote history
+- --all → push all branches
+
+```
+Rotate/revoke API key immediately
+```
+- Even after deleting from Git:
+- someone may already have copied it
+- GitHub/public scanners may have seen it
+
+#### How do you squash multiple commits into one before raising a PR?
+```
+git rebase -i HEAD~4   # last 4 commits
+
+# In editor, change 'pick' to 'squash' for commits to combine
+# Save, write new commit message
+git push origin feature-branch --force
+```
+#### What is git stash and when did you use it?
+```
+# You are in middle of work, urgent bug fix needed on another branch
+git stash           # saves uncommitted work temporarily
+git checkout hotfix-branch
+# do your fix...
+git checkout feature-branch
+git stash pop       # restores your saved work
+```
+
 
 
    
