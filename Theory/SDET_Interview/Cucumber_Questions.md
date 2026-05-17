@@ -9,7 +9,7 @@ Hooks (.java)               →  runs Before/After each scenario (setup/teardown
 - Feature file = Test case written in plain English
 - Step Definition = Actual automation code
 - Runner file = Main class that starts everything
-- Hooks = @BeforeMethod / @AfterMethod equivalent in Cucumber
+- Hooks = @Before / @After equivalent in Cucumber
 
 #### Q2. Explain the Runner File — What each configuration means?
 - The Runner file is the entry point of Cucumber execution. It tells Cucumber:
