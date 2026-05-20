@@ -888,7 +888,7 @@ src/test/resources/features/checkout.feature:42
 ```
 - Run `FailedTestRunner` → only those 2 scenarios run.
 - This saved us a lot of time in CI/CD. If nightly run had 15 failures, instead of re-running 300 scenarios, we re-ran only the 15 failed ones in next build.
-- Note: In CI/CD Jenkins we need to first check if `failed_scenarios.txt` is created, if yes need to read and then execute using `mvn test -Dtest=FailedTestRunner`
+- Note: In CI/CD Jenkins we need to first check if `failed_scenarios.txt` is created, if yes need to read and then execute using `mvn test -Dtest=FailedTestRunner` otherwise pipeline may fail unnecessarily.
 
 #### Q23. What is Cucumber's World Object? 
 - In Cucumber-JVM, the World Object concept is implemented through fresh step definition instances for every scenario. 
