@@ -622,6 +622,7 @@ Solution:
 - In parallel execution, we use ThreadLocal WebDriver to ensure listeners capture the correct browser instance safely.
 - Listeners help us separate framework-level concerns from actual test scripts, which improves maintainability and scalability.
 - Commonly Used Listeners:
+
 | Listener                 | Purpose                        |
 | ------------------------ | ------------------------------ |
 | `ITestListener`          | Track test execution events    |
