@@ -852,20 +852,35 @@ allure serve target/allure-results
 
 #### Q22. How do you run only failed scenarios from last run? 
 - This is very useful in real projects. If 200 scenarios run and 10 fail, you don't want to re-run all 200.
+- As per standard practice I will created two `TestRunner` classes. One for full run and second for re-run.
 - Cucumber has a built-in @CucumberOptions for this:
+- For this to work, add the rerun plugin in main runner:
+```java
+@CucumberOptions(
+    features = "src/test/resources/features",     // all feature file which need to run
+    glue = "com.project.stepdefinitions",         
+    tags = "@Regression and not @WIP",            
+    monochrome = true,                           
+    dryRun = false,                               
+    plugin = {                                    
+        "pretty",                                 
+        "html:target/cucumber-reports/report.html",
+        "json:target/cucumber-reports/report.json",
+        "junit:target/cucumber-reports/report.xml"
+        "rerun:target/failed_scenarios.txt"          // writes failed scenario paths here automatically
+    }
+)
+public class TestRunner { }
+```
+
 ```java
 @CucumberOptions(
     features = "@target/failed_scenarios.txt",  // re-run only failed
-    glue = "com.project.stepdefs"
+    glue = "com.project.stepdefinitions"
 )
 public class FailedTestRunner { }
 ```
-- For this to work, add the rerun plugin in main runner:
-```java
-plugin = {
-    "rerun:target/failed_scenarios.txt"   // writes failed scenario paths here automatically
-}
-```
+
 - After first run, `failed_scenarios.txt` contains:
 ```gherkin
 src/test/resources/features/login.feature:15
@@ -873,6 +888,7 @@ src/test/resources/features/checkout.feature:42
 ```
 - Run `FailedTestRunner` → only those 2 scenarios run.
 - This saved us a lot of time in CI/CD. If nightly run had 15 failures, instead of re-running 300 scenarios, we re-ran only the 15 failed ones in next build.
+- Note: In CI/CD Jenkins we need to first check if `failed_scenarios.txt` is created, if yes need to read and then execute using `mvn test -Dtest=FailedTestRunner`
 
 #### Q23. What is Cucumber's World Object? 
 - In Cucumber-JVM, the World Object concept is implemented through fresh step definition instances for every scenario. 
