@@ -468,7 +468,7 @@ public class LoginTest {
 - Parallel execution in TestNG is used to run multiple test cases simultaneously using multiple threads.
 - This helps reduce execution time significantly in large regression suites and is heavily used in CI/CD pipelines.
 - There are 4 Types of Parallel Execution in TestNG
-1. parallel="methods"
+**1. parallel="methods"**
 - Each `@Test` method runs in a separate thread.
 ```xml
 <suite parallel="methods" thread-count="4">
@@ -477,7 +477,7 @@ public class LoginTest {
   - Faster execution within same class
   - Independent test methods
 
-2. parallel="tests"
+**2. parallel="tests"**
 - Each <test> tag runs in a separate thread.
 ```xml
 <suite parallel="tests" thread-count="2">
@@ -486,7 +486,7 @@ public class LoginTest {
   - Cross-browser testing
   - Environment-based execution
 
-3. parallel="classes"
+**3. parallel="classes"**
 - Each test class runs in separate thread.
 ```xml
 <suite parallel="classes" thread-count="3">
@@ -495,7 +495,7 @@ public class LoginTest {
   - Large framework
   - Independent modules
 
-4. parallel="instances"
+**4. parallel="instances"**
 - Each object instance of a class runs in parallel.
 ```xml
 <suite parallel="instances" thread-count="2">
