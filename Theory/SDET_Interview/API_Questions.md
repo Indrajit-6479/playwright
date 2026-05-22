@@ -4,8 +4,8 @@
 #### Q1. How do you validate JSON schema in your project? Write the code for it.
 #### Q1. Explain REST API architecture in your project and how you validate responses.
 - In Rest Assured, I validate API response body and schema in two levels.
-- First, I validate the response data using status code, response body values, headers, and JSON paths.
-- Second, I validate the response schema to make sure API structure is correct and fields are not changed unexpectedly.
+   - First, I validate the response data using status code, response body values, headers, and JSON paths.
+   - Second, I validate the response schema to make sure API structure is correct and fields are not changed unexpectedly.
 - For response body validation, I generally use then().body() with Hamcrest matchers.
 ```java
 given()
@@ -118,6 +118,7 @@ given()
 #### Q5. Important HTTP Status Codes Used in API Testing
 - In API testing, HTTP status codes are very important because they tell us whether request is successful, client made mistake, or server failed
 - During testing, I mostly work with 2xx, 4xx, and 5xx status codes.
+
 **2xx → Success Responses**
 
 | Status Code    | Meaning                         | Real-Time Usage         |
@@ -365,6 +366,52 @@ for(String city : cities) {
 | hasItems()        | Validate list values            | body("cities", hasItems("Delhi"))           |
 | notNullValue()    | Validate field exists           | body("token", notNullValue())               |
 
+#### Q18. What is API Mocking?
+- API mocking means creating a fake or simulated API that behaves like the real API.
+- We use it in testing when the actual API is not ready, unavailable, slow, or dependent on third-party systems.
+- With mocking, we can test our application independently without waiting for the real backend service.
 
+#### Q19. XML Response Validation in Rest Assured
+- In Rest Assured, I validate XML API responses at two levels:
+  - First, I validate the response data like status code, XML node values, headers, and XPath values.
+  - Second, I validate the XML schema using XSD validation to ensure response structure is correct.
+- For XML response body validation, I generally use then().body() with XPath expressions and Hamcrest matchers.
+```java
+given()
+.when()
+    .get("https://api.test.com/user/101")
+.then()
+    .statusCode(200)
+    .body("user.id", equalTo("101"))
+    .body("user.name", equalTo("Rahul"))
+    .body(hasXPath("/user/role"));
+```
+- Here I am validating: Status code, XML node values, XML tag existence using XPath
+- For extracting and validating specific XML values, I also use XmlPath.
+```java
+Response response = given()
+                    .when()
+                    .get("https://api.test.com/user/101");
+
+XmlPath xmlPath = new XmlPath(response.asString());
+
+String role = xmlPath.getString("user.role");
+
+Assert.assertEquals(role, "SDET");
+```    
+- For XML schema validation, I use XSD validation in Rest Assured.
+```java
+given()
+.when()
+    .get("https://api.test.com/user/101")
+.then()
+    .statusCode(200)
+    .body(matchesXsdInClasspath("userSchema.xsd"));
+```
+- Here `userSchema.xsd` is stored inside the resources folder.
+- `.body(matchesXsdInClasspath("userSchema.xsd"))` validates the complete XML response structure against the XSD schema
+- including: Mandatory fields, Data types, XML hierarchy Allowed elements
+- In real projects, XML schema validation is very useful in regression testing because if developers accidentally change XML structure or remove fields, our automation tests fail immediately and we can quickly identify contract-breaking changes.
+- for XML SD validation there is no need to add any new dependency in pom.xml because it will handled by core rest assured library `rest-assured`.
 
 
