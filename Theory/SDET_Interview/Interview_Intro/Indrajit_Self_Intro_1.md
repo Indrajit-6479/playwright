@@ -43,23 +43,20 @@ Step 3: API Injection
 Step 4: API Response Validation
 - After API execution, we validate HTTP response codes to confirm successful processing.
 
-Step 5: Database Validation (Most Critical Part)
-- Database validation is one of the most important responsibilities in my project.
+Step 5: Database Validation And Tag-Level Validation(Most Critical Part)
 - We validate payment persistence in MongoDB.
 - Here we have extracted required message from DB and perform tag level validations.
+- We are comparing business level tags like comparing `bdJsonEnrichedMsg Vs translatedMsg` and many more
+- To validate key tags like Dbtr (Debtor), Cdtr (Creditor), UltmtDbtr, UltmtCdtr, and InitgPty.
+- Databases :->
 - presanctiondb: sourceMsg, bdJsonEnrichedMsg
 - sanctiondb: Sanction request, Sanction response
 - gftts-glueback-db: rcvdMsg, translatedMsg, sentMsg, enrichedTags
 - AuditLog: complete audit trail
 
-Step 6: Tag-Level Validation
-- We don't just verify data existence. We validate actual business tags by comparing source and destination values.
-Key tags include Dbtr (Debtor), Cdtr (Creditor), UltmtDbtr, UltmtCdtr, and InitgPty.
-
-Step 7: Reporting
+Step 6: Reporting
 - After execution, we generate consolidated reports:
 Using:
 - Apache POI → Excel reports
 - Extent Reports → HTML reports
-
 
