@@ -572,14 +572,3 @@ Have you built a framework from scratch? Explain how you designed it.
 
 I am having 6+ years of experience as SDET, preparing topic wise interview questions now I am preparing for API testing real time interview questions. I will give you question your task is give me ans in simple English but such way that interviewer get to know I have knowledge of it and he will select me. give me such a way that I also easy to remember and tell in interview. question 1) How do you validate API response body and schema using Rest Assured ?
 
-
-
-
-| OOP Concept       | UI Automation Usage                                                                                                    | API Automation Usage                                                                                                                |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Encapsulation** | Used in Page Object Model classes by hiding locators and exposing only page methods like `login()` and `clickSubmit()` | Used in request builder/service classes by hiding headers, payloads, and request specifications while exposing reusable API methods |
-| **Inheritance**   | Used in `BaseTest` and `BasePage` classes for reusable setup, driver initialization, waits, and common methods         | Used in `BaseAPI` and `BaseTest` classes for reusable authentication, base URI setup, common request configurations                 |
-| **Polymorphism**  | Used through method overloading and interfaces for reusable browser actions like multiple `click()` methods            | Used through interfaces and overloaded methods for handling GET, POST, PUT, DELETE requests in reusable way                         |
-| **Abstraction**   | Used with abstract classes/interfaces to enforce common page structure and reusable methods                            | Used with abstract classes/interfaces to standardize API validation, request handling, and framework structure                      |
-
-
