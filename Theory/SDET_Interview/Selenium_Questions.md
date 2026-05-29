@@ -111,6 +111,7 @@ WebElement element = wait.until(
 
 #### Q4. Difference between XPath and CSS Selector?
 - Both XPath and CSS Selector are used to locate web elements in Selenium.
+
 **CSS Selector:**
 - CSS Selector is faster because browsers are built to understand CSS naturally.
 - It is simple, short, and easy to read.
