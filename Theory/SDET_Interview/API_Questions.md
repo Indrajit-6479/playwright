@@ -157,7 +157,7 @@ given()
 - Real example: Normal user trying to access admin dashboard → 403 (they are logged in but don't have admin rights)
 
 #### Q7. What is difference between 400 and 422?
-- `400` → Request is malformed. JSON syntax error, missing required header
+- `400` → Bad Request → Request is malformed. JSON syntax error, missing required header
 - `422` → Request structure is fine but data fails validation. Email format wrong, age is negative
 
 #### Q8. Different authentication types — Bearer, OAuth, Basic Auth.
