@@ -245,7 +245,7 @@ public class PaymentPage {
 }
 ```
 
-#### Q7. How do you handle alerts, popups, and iframes in Selenium?
+#### Q7. How do you handle alerts, popups, and iframes in Selenium? and How many ways to pass values to frames?
 - These are three different things in Selenium, and we handle each differently.
 
 **Part 1 — Alerts:**
@@ -297,11 +297,19 @@ driver.findElement(By.id("closeBtn")).click();
 - Selenium cannot directly interact with elements inside an iFrame.
 - We must switch into the iFrame first using `switchTo().frame()`, perform the actions, and then return to the main page using `defaultContent()`.
 ```java
-// Switch into iframe
-driver.switchTo().frame("paymentFrame");
+// Way 1 — by Index (0 = first frame on page, 1 = second, and so on)
+driver.switchTo().frame(0);
 
-// Perform Actions
-driver.findElement(By.id("cardNumber")).sendKeys("1234567890");
+// Way 2 — by Name or ID attribute of the frame
+driver.switchTo().frame("payment-frame");
+driver.switchTo().frame("razorpay-iframe");  // payment domain example
+
+// Way 3 — by WebElement (most reliable — works even when name/id is dynamic)
+WebElement iframe = driver.findElement(By.xpath("//iframe[@class='checkout-frame']"));
+driver.switchTo().frame(iframe);
+
+// Come back one level up — parent frame
+driver.switchTo().parentFrame();
 
 // Switch Back to Main Page
 driver.switchTo().defaultContent();
@@ -402,3 +410,163 @@ WebDriver driver = new ChromeDriver(options);
   - 4. Hub sends test to available Node
   - 5. Node opens browser and runs test
 
+
+#### Q11. What are Selenium 4 new features and WebDriver architecture?
+
+- Selenium 4 mainly improved stability and added some practical features which make automation easier.
+
+- One major improvement is Selenium 4 now follows the W3C WebDriver standard completely. Because of this, communication between Selenium and browsers became more stable and consistent across Chrome, Firefox, and Edge. In Selenium 3, sometimes browser compatibility issues happened more often.
+
+- Some useful Selenium 4 features:
+
+**1. Relative Locators:**
+- We can find elements using position like above, below, near, left, or right. This is helpful when proper locators are not available.
+
+**2. New Tab and Window Handling:**
+- Selenium 4 introduced switchTo().newWindow() which can directly open a new tab or window in one line.
+
+**3. Chrome DevTools Protocol (CDP):**
+- This is one of the most useful features. It allows Selenium to capture network calls, browser logs, and intercept requests.
+- In my project, while testing payment flow, I used CDP to monitor payment API requests during UI automation. So instead of creating a separate API test, I verified directly from browser network calls whether the correct request payload was sent.
+
+**4. Improved Selenium Grid:**
+- Grid setup became simpler compared to Selenium 3 because Hub and Node management is easier now.
+
+**5. Element Screenshot:**
+  We can capture screenshot of a specific element instead of full page, which helps during failure debugging.
+
+```java
+// Relative Locators — Selenium 4
+WebElement payButton = driver.findElement(
+    RelativeLocator.with(By.tagName("button")).below(By.id("card-number"))
+);
+
+// Open new tab
+driver.switchTo().newWindow(WindowType.TAB);
+
+// Screenshot of one element only
+WebElement receipt = driver.findElement(By.id("payment-receipt"));
+File screenshot = receipt.getScreenshotAs(OutputType.FILE);
+```
+
+#### Q12. Explain WebDriver Architecture / How does Selenium WebDriver communicate with the browser internally?
+**WebDriver architecture:**
+- The flow is simple.
+- First, our automation script sends commands using Selenium WebDriver API. Then browser driver like ChromeDriver receives the command and communicates with the browser using W3C protocol. Browser performs the action and sends response back.
+- Flow is:
+`Automation Test Script → Selenium WebDriver API → Browser Driver (ChromeDriver) → W3C Protocol → Browser`
+- For example, if I write driver.click(), Selenium sends that command to ChromeDriver, ChromeDriver talks to Chrome browser, performs click action, and returns success response back to the script.
+- Selenium 3 used its own custom JSON Wire Protocol. Selenium 4 uses the official W3C WebDriver standard. 
+- This removes the translation layer, makes communication more reliable, and eliminates browser-specific inconsistencies.
+
+#### Q.13 How do you handle StaleElementReferenceException?
+- A StaleElementReferenceException happens when Selenium finds an element and stores its reference, but before Selenium performs an action on it, the DOM gets updated. Because of that, the old element reference becomes invalid or "stale".
+- Common reasons are:
+  - Page refreshes after an action
+  - JavaScript frameworks like React or Angular re-render the page
+  - Navigation happens between finding and using the element
+  - Dynamic content gets updated in the background
+- For example, in payment applications, after clicking the Submit button, the page often refreshes or updates part of the screen. If Selenium tries to use an element that was found before the refresh, it may throw a StaleElementReferenceException.
+- So, my preferred solution is:
+  - Re-locate the element instead of reusing old references.
+  - For dynamic pages Use Explicit Waits with refreshed conditions.
+  - For critical business flows Use retry logic
+
+**Try-catch with retry logic (most robust for framework):**
+```java
+public WebElement findWithRetry(By locator, int retries) {
+    for (int i = 0; i < retries; i++) {
+        try {
+            return driver.findElement(locator);
+        } catch (StaleElementReferenceException e) {
+            System.out.println("Stale element — retrying attempt " + (i + 1));
+        }
+    }
+    throw new RuntimeException("Element still stale after " + retries + " retries");
+}
+```
+
+#### Q.14 What is the difference between driver.get() and driver.navigate().to()?
+- Both `driver.get()` and `driver.navigate().to()` are used to open a URL and wait for the page to load 
+- So for basic navigation they behave the same
+- The main difference is that driver.navigate() provides additional methods like:
+   - navigate().back()
+   - navigate().forward()
+   - navigate().refresh() 
+- These features are not available with driver.get()
+- I usually use driver.get() to launch the application at the start of a test and driver.navigate() when I need browser navigation actions during the test flow. 
+- For example, in payment testing I use navigate().refresh() to verify that the transaction status remains correct after a page reload.
+
+#### Q15. How do you handle dropdowns using the Select class?
+- The Select class in Selenium is used to handle dropdowns that are created using the HTML `<select>` tag. It provides built-in methods to select options easily.
+- To use it, I first locate the dropdown element and then create a Select object. After that, I can select an option using:
+   - selectByVisibleText()
+   - selectByValue()
+   - selectByIndex()
+- In real projects, I mostly use selectByVisibleText() because it matches what the user actually sees on the screen, making the test more readable and reliable.
+- I also use methods like getOptions() to verify all available dropdown values. For example, in payment applications, I have used it to validate that all supported payment methods are displayed correctly in the dropdown.
+- One important point is that the Select class works only with native HTML `<select>` tag dropdowns.
+- Nowadays many applications use custom dropdowns built with `<div>`, `<ul>`, and `<li>` elements. In those cases, the Select class will not work and may throw an UnexpectedTagNameException. For such dropdowns, I handle them as regular WebElements by clicking the dropdown and selecting the required option manually. 
+
+```java
+WebElement dropdownElement = driver.findElement(By.id("payment-method"));
+Select select = new Select(dropdownElement);
+
+// Way 1 — by visible text (what user sees on screen)
+select.selectByVisibleText("Credit Card");
+
+// Way 2 — by value attribute in HTML
+select.selectByValue("credit_card");
+
+// Way 3 — by index (0 = first option)
+select.selectByIndex(2);
+```
+
+#### Q16. Can you automate file upload and download in Selenium?
+- Yes, Selenium can automate both file upload and file download.
+- For file upload, I mainly use two approaches:
+**Approach 1: sendKeys() on file input element (Preferred Approach)**
+- If the application uses a native HTML `<input type="file">` element, I directly use sendKeys() and pass the complete file path.
+- This is the simplest and most reliable method because it does not open the operating system file dialog.
+**Approach 2: Robot Class**
+- Sometimes applications use custom upload buttons or hide the file input element. 
+- In those cases, I use Java Robot Class.
+- The Robot Class helps me interact with the OS file upload window by:
+  - Copying the file path
+  - Pasting it into the file dialog
+  - Pressing Enter 
+
+- For file download, I mainly use two approaches:
+**Approach 1: Configure download location using ChromeOptions**
+- Before launching the browser, I configure Chrome download preferences using ChromeOptions.
+- I set:
+  - A specific download folder
+  - Disable the "Save As" popup
+  - Allow downloads to happen automatically
+  - This makes file downloads run silently during automation.
+**Approach 2: Verify file download**
+- After triggering the download, I verify that the file was downloaded successfully.
+- I usually have a utility method that continuously checks the download folder until:
+- The expected file appears, or A timeout is reached
+- Then I validate:
+   - File name
+   - File extension
+   - File existence
+   - Sometimes file content if required
+- In my payment project, I used this approach to verify that invoice PDFs and transaction receipt files were downloaded successfully and contained the expected data.
+
+#### Q17. Explain the use of the Robot Class in Selenium.
+- The Robot Class is a Java class, not a Selenium class. 
+- It is used to perform keyboard and mouse actions at the operating system level. 
+- Selenium can interact only with browser elements, so it cannot handle OS-level windows such as:
+  - File upload dialogs
+  - Windows authentication popups
+  - Native system alerts
+- In such situations, I use the Robot Class because it can simulate real keyboard and mouse actions.
+- For example, during file upload, if clicking the upload button opens a Windows file chooser, Selenium cannot interact with that window directly. In that case, I copy the file path to the clipboard and use Robot Class to perform keyboard actions like Ctrl+V and Enter to select the file.
+- However, I use Robot Class only when necessary because it has some limitations:
+   - It works at the operating system level, so screen resolution changes can affect execution.
+   - It may behave differently on Windows, Mac, and Linux.
+   - It requires a visible display and does not work reliably in headless execution.
+   - It can be unstable in CI/CD environments like Jenkins or Docker
+- Because of these limitations, my preferred approach for file uploads is always sendKeys() on the file input element. I use Robot Class only when the file input is hidden or when a native OS dialog must be handled.
