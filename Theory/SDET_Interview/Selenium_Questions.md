@@ -392,11 +392,13 @@ WebDriver driver = new ChromeDriver(options);
 - With Grid:
   - Tests run in parallel on multiple machines
   - Can finish in 20–30 minutes
+  
 **Hub:**
 - Hub is the main server
 - It receives test requests
 - Manages connected nodes
 - Sends tests to available nodes
+
 **Node:**
 - Node is the worker machine where the actual browser execution happens.
 
