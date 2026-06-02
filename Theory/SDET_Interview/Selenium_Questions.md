@@ -527,9 +527,11 @@ select.selectByIndex(2);
 #### Q16. Can you automate file upload and download in Selenium?
 - Yes, Selenium can automate both file upload and file download.
 - For file upload, I mainly use two approaches:
+  
 **Approach 1: sendKeys() on file input element (Preferred Approach)**
 - If the application uses a native HTML `<input type="file">` element, I directly use sendKeys() and pass the complete file path.
 - This is the simplest and most reliable method because it does not open the operating system file dialog.
+  
 **Approach 2: Robot Class**
 - Sometimes applications use custom upload buttons or hide the file input element. 
 - In those cases, I use Java Robot Class.
@@ -539,6 +541,7 @@ select.selectByIndex(2);
   - Pressing Enter 
 
 - For file download, I mainly use two approaches:
+  
 **Approach 1: Configure download location using ChromeOptions**
 - Before launching the browser, I configure Chrome download preferences using ChromeOptions.
 - I set:
@@ -546,6 +549,7 @@ select.selectByIndex(2);
   - Disable the "Save As" popup
   - Allow downloads to happen automatically
   - This makes file downloads run silently during automation.
+  
 **Approach 2: Verify file download**
 - After triggering the download, I verify that the file was downloaded successfully.
 - I usually have a utility method that continuously checks the download folder until:
